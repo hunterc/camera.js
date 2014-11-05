@@ -76,7 +76,7 @@
 
 						// successCallback
 						function(localMediaStream) {
-							var video = document.querySelector('video');
+							// video set in createDom call
 							video.src = window.URL.createObjectURL(localMediaStream);
 							video.play();
 						},
@@ -96,6 +96,14 @@
 				callback = callback || function() {};
 				context.drawImage(video, 0, 0, canvasWidth, canvasHeight);
 				callback(getDataURI(canvas));
+			},
+
+			resume: function() {
+				video.play();
+			},
+
+			pause: function() {
+				video.pause();
 			},
 
 			// converts canvas to data-uri -> uri string
